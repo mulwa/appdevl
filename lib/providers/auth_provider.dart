@@ -118,6 +118,7 @@ class AuthProvider with ChangeNotifier {
                           //user already exists
                           if (this.screen == 'login') {
                             //need to check user data already exists in db or not
+                            print("Location" + snapshot.data()['address']);
                             if (snapshot.data()['address'] != null) {
                               Navigator.pushReplacementNamed(
                                   contex, HomePage.id);

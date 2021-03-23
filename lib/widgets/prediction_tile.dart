@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:test00001020/consta.dart';
 import 'package:test00001020/model/address.dart';
 import 'package:test00001020/model/place_prediction.dart';
+import 'package:test00001020/providers/user_location_provider.dart';
 import 'package:test00001020/utils/request_helper.dart';
 
 class PridictionTile extends StatelessWidget {
@@ -27,8 +28,10 @@ class PridictionTile extends StatelessWidget {
       address.latitude = res['result']['geometry']['location']['lat'];
       address.longitude = res['result']['geometry']['location']['lng'];
 
-      ;
-      Navigator.pop(context, 'getDirection');
+      Provider.of<UserAddressProvider>(context, listen: false)
+          .updateUserAddress(address);
+
+      Navigator.pop(context, address.placeName);
     }
   }
 
@@ -46,7 +49,11 @@ class PridictionTile extends StatelessWidget {
             ),
             Row(
               children: [
-                Icon(Icons.location_city),
+                Image.asset(
+                  'assets/images/marker.png',
+                  height: 16,
+                  width: 16,
+                ),
                 SizedBox(
                   width: 12,
                 ),

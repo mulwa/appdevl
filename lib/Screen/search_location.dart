@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test00001020/Screen/map_screen.dart';
 import 'package:test00001020/consta.dart';
 import 'package:test00001020/model/place_prediction.dart';
 import 'package:test00001020/utils/request_helper.dart';
@@ -56,7 +57,6 @@ class _SearchDestinationState extends State<SearchDestination> {
         child: Column(
           children: [
             Container(
-              height: 210,
               decoration: BoxDecoration(color: Colors.white, boxShadow: [
                 BoxShadow(
                     color: Colors.black12,
@@ -69,17 +69,23 @@ class _SearchDestinationState extends State<SearchDestination> {
                     left: 24, top: 48, right: 24, bottom: 20),
                 child: Column(
                   children: [
-                    Stack(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
                             },
                             child: Icon(Icons.arrow_back)),
-                        Center(
-                            child: Text('Set Destination',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w800)))
+                        Text('Your Location',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w800)),
+                        IconButton(
+                            icon: Icon(Icons.map),
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
+                                  context, MapScreen.id);
+                            })
                       ],
                     ),
                     SizedBox(
@@ -87,57 +93,15 @@ class _SearchDestinationState extends State<SearchDestination> {
                     ),
                     Row(
                       children: [
-                        Image.asset(
-                          'assets/images/pickIcon.png',
-                          height: 16,
-                          width: 16,
+                        Icon(
+                          Icons.location_pin,
+                          color: Colors.amberAccent,
                         ),
                         SizedBox(
                           width: 18,
                         ),
                         Expanded(
                           child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: TextField(
-                                controller: pickUpController,
-                                decoration: InputDecoration(
-                                    hintText: 'Pickup Location',
-                                    fillColor: Colors.grey,
-                                    filled: true,
-                                    isDense: true,
-                                    contentPadding: EdgeInsets.only(
-                                        left: 10, top: 8, bottom: 8),
-                                    border: InputBorder.none),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/pickIcon2.png',
-                          height: 16,
-                          width: 16,
-                        ),
-                        SizedBox(
-                          width: 18,
-                        ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: TextField(
@@ -147,12 +111,15 @@ class _SearchDestinationState extends State<SearchDestination> {
                                 focusNode: focusDestination,
                                 controller: destinationController,
                                 decoration: InputDecoration(
-                                    hintText: 'Where to ?',
-                                    fillColor: Colors.grey,
+                                    hintText: 'Enter current address',
+                                    hintStyle: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
+                                    fillColor: Colors.white,
                                     filled: true,
                                     isDense: true,
                                     contentPadding: EdgeInsets.only(
-                                        left: 10, top: 8, bottom: 8),
+                                        left: 10, top: 10, bottom: 10),
                                     border: InputBorder.none),
                               ),
                             ),

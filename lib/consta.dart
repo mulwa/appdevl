@@ -1,1 +1,1 @@
-const kApiKey = 'AIzaSyC02JipLdZH0ZzlcR3sKfeL3uH8eSClfU8';
+const kApiKey = 'AIzaSyDEF-s2suQG1TwhOkans4CSjBpy5Lq0hBA';

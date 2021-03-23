@@ -5,6 +5,7 @@ import 'package:test00001020/Screen/HomePage.dart';
 import 'package:test00001020/Screen/mylocation_screen.dart';
 import 'package:test00001020/providers/auth_provider.dart';
 import 'package:test00001020/providers/location_provider.dart';
+import 'package:test00001020/providers/user_location_provider.dart';
 import 'package:test00001020/welcomeScreen.dart';
 import 'Screen/landing_screen.dart';
 import 'Screen/login_screen.dart';
@@ -18,6 +19,7 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (_) => AuthProvider()),
       ChangeNotifierProvider(create: (_) => LocationProvider()),
+      ChangeNotifierProvider(create: (_) => UserAddressProvider())
     ],
     child: MyApp(),
   ));
