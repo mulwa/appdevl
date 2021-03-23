@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test00001020/Screen/HomePage.dart';
 import 'package:test00001020/Screen/landing_screen.dart';
+import 'package:test00001020/Screen/mylocation_screen.dart';
+import 'package:test00001020/Screen/setlocation_screen.dart';
 import 'package:test00001020/services/user_services.dart';
 
 import 'location_provider.dart';
@@ -123,8 +125,13 @@ class AuthProvider with ChangeNotifier {
                               Navigator.pushReplacementNamed(
                                   contex, HomePage.id);
                             }
-                            Navigator.pushReplacementNamed(
-                                contex, LandingScreen.id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SetLocationAddress()));
+                            // Navigator.pushReplacementNamed(
+                            //     contex, LandingScreen.id);
                           } else {
                             updateUser(id: user.uid, number: user.phoneNumber);
                             Navigator.pushReplacementNamed(contex, HomePage.id);
